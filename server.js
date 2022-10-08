@@ -6,12 +6,13 @@ const port = process.env.PORT || 8080;
 
 app.use(express.static(__dirname + '/public'));
 
+app.get(/style|html|js/, (req, res) => {
+  res.sendFile(`${__dirname}/${req.path}`);
+});
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
 });
-app.get(/icon|canvas|public/, (req, res) => {
-  res.sendFile(`${__dirname}/${req.path}`);
-});
+
 
 //The 404 Route (ALWAYS Keep this as the last route)
 app.get('*', function (req, res) {
