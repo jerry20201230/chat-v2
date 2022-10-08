@@ -21,12 +21,12 @@ app.get('*', function (req, res) {
 });
 
 
-io.on("connect",function(socket_id){
-    console.log(`user ${socket_id} connected`)
+io.on("connect",function(socket){
+    console.log(`user ${socket.id} connected`)
 })
 
-io.on("disconnect",function(socket_id){
-  console.log(`user ${socket_id} disconnected`)
+io.on("disconnect",function(socket){
+  console.log(`user ${socket.id} disconnected`)
 })
 
 
