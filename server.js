@@ -6,6 +6,9 @@ const port = process.env.PORT || 8080;
 
 app.use(express.static(__dirname + '/public'));
 
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/index.html');
+});
 app.get(/icon|canvas|public/, (req, res) => {
   res.sendFile(`${__dirname}/${req.path}`);
 });
