@@ -6,6 +6,7 @@ const port = process.env.PORT || 8080;
 
 
 
+
 app.get(/style|html|js/, (req, res) => {
   res.sendFile(`${__dirname}/${req.path}`);
 });
@@ -33,5 +34,6 @@ io.on("disconnect",function(socket_id){
 http.listen(port, function(){
   console.log('listening on port ' + port)
   console.log(process.env.admin_name)
+  console.log(process.env.admin_key)
   console.log("Hello World : )")
 });
