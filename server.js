@@ -24,8 +24,8 @@ app.get('*', function (req, res) {
 io.on("connection",function(socket){
     console.log(`user ${socket.id} connected`);
     
-    socket.on("disconnect",function(socket){
-       console.log(`user ${socket.id} disconnected`)
+    socket.on("disconnect",function(soc){
+       console.log(`user ${soc.id} disconnected`)
     })
 
 })
