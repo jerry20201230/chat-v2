@@ -32,12 +32,12 @@ io.on("connection",function(socket){
 io.on("connection", (socket) => {
     console.log(`user ${socket.id} connected`);
 
-  socket.on("disconnect", (msg) => {
+  socket.on("signup", (msg) => {
     
     console.log(`user ${msg.id} signup nickname ${msg.nickname}`)
   });
     
-  socket.on("disconnect", (reason) => {
+  socket.on("disconnectd", (reason) => {
     
     console.log(`user ${reason.id} disconnected`)
   });
