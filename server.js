@@ -39,7 +39,7 @@ io.on("connection", (socket) => {
     
   socket.on("disconnectd", (reason) => {
     
-    console.log(`user ${reason.id} disconnected`)
+    console.log(`user ${socket.id} disconnected`)
   });
 });
 
