@@ -22,13 +22,26 @@ app.get('*', function (req, res) {
 
 
 io.on("connection",function(socket){
-    console.log(`user ${socket.id} connected`);
-    
     socket.on("disconnect",function(soc){
-       console.log(`user ${soc.id} disconnected`)
+       
     })
 
 })
+
+
+io.on("connection", (socket) => {
+    console.log(`user ${socket.id} connected`);
+
+  socket.on("disconnect", (msg) => {
+    
+    console.log(`user ${msg.id} signup nickname ${msg.nickname}`)
+  });
+    
+  socket.on("disconnect", (reason) => {
+    
+    console.log(`user ${reason.id} disconnected`)
+  });
+});
 
 
 

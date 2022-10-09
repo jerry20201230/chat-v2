@@ -28,23 +28,23 @@
 
         <p>
         <div class="form-check mb-3">
-            <label>暱稱</label><input type="text" class="form-control" placeholder="暱稱">
-            <div class="invalid-feedback" style="display: none;"></div>
+            <label for="signup_nickname">暱稱</label><input id="signup_nickname" type="text" class="form-control" placeholder="暱稱">
+            <div class="invalid-feedback" id="signup_nickname_alert" style="display: none;"></div>
         </div>
 
         
-            <p>你的ID:
+            <!--<p>你的ID:
                 <span class="user-id" style="display: inline;">&nbsp;正在取得
                     <span class="spinner-border text-primary" style="width: 1em;height: 1em; display: inline-block;"
                         role="status">
                         <span class="visually-hidden">Loading...</span>
                     </span>
                 </span>
-            </p>
+            </p>-->
    
 
         <p class="d-flex">
-            <button class="btn btn-primary">繼續</button>
+            <button class="btn btn-primary" id="signup_btn">繼續</button>
 
 
         </p>
@@ -74,7 +74,7 @@
             <p class="d-flex">
                 <button class="btn btn-primary" id="login_btn">登入</button>
                 <button class="btn btn-link" onclick="alert('神也救不了你')">忘記密碼?</button>
-                <button class="btn btn-link">註冊</button>
+              
             </p>
         </div>
 
@@ -117,9 +117,24 @@
         crossorigin='anonymous'></script>
 
     <script>
-        var status = "login";
+        var status = "signup";
         
         var socket = io();
+
+        $("#signup-btn").on("click", function (e) {
+            if ($("#signup_nickname").val() == "") {
+                $("#signup_nickname_alert").html("*請填寫此欄位*").show();
+                $("#signup_nickname").addClass("is-invalid")
+            } else {
+
+                socket.emit("signup",{'nickname':$("#signup_nickname").val(),'id':socket.id})
+            }
+        })
+
+
+
+
+
 
 
 
